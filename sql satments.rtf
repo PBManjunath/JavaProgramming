@@ -1,0 +1,217 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Create database databaseName;\
+Show database;\
+Create or Replace database database_Name;\
+\
+DROP DATABASE database_Name;\
+\
+Alter database old-database-name MODIFY NAME = new_database_name;\
+\
+\
+Table\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+Create table table name \
+(\
+column1 type not null ,\
+Column2 type ,\
+\
+CONSTRAINT ANY_NAME PRIMARY KEY (column,cloumn)\
+);\
+\
+\
+CREATE TABLE table_name AS \
+SELECT Statement\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+DROP TABLE tableName;\
+\
+DELETE FROM table_name [WHERE condition]\
+\
+TRUNCATE TABLE tableName (table structure will remain same)\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+ALTER TABLE old_table_name TO new_table_name;\
+\
+ALTER TABLE tableName ADD/MODIFY/DROP coulumnName cozlmntype\
+\
+ALTER TABLE tableName DROP COLUMN  coulumnName\
+\
+ALTER TABLE tableName RENAME old_name T0 new_Name;\
+\
+\
+\
+Copy into new table\
+SELECT * INTO new_table FROM old_table;\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+\
+SELECT * [COLUMN]\
+FROM tableName\
+WHERE Condition\
+ORDE BY column desc\
+\
+\
+SELECT  aggregateFunction \
+FROM tableName\
+GROUP BY columnName;\
+HAVING\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+SELECT DISTINCT\
+SELECT COUNT(COLUMN). NULL not not counted\
+SELECT COUNT(*) notnull also null\
+\
+SELECT COLUMNS \
+FROM Table\
+WHERE condition\
+LIMIT value\
+\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+INSERT INTO table_name VALUES(value1,value2);\
+\
+INSERT INTO table_name (column1,column2) VALUES (value1,value2);\
+\
+INSERT INTO table_name [(column1,column2)]\
+SELECT column1, column2, column3\
+FROM table_name\
+WHERE condition\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+ UPDATE tablename\
+SET column = \
+WHERE condition;\
+\
+DELETE  FROM tablename [ONE or MORE RPWS gets deleted]\
+\
+\
+\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+INNER JOIN\
+SELECT \
+FROM TABLE1, TABLE2\
+WHERE TABLE1.coulmn = TABLE2.column\
+\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+LEFT OUTER JOIN\
+\
+SELECT TABLE1.column, TABLE2.column\
+FROM TABLE1 LEFT OUTER JOIN TABLE2 ON table1.column = table2.column;\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+RIGHT OUTER JOIN\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 SELECT TABLE1.column, TABLE2.column\
+FROM TABLE1 RIGHT OUTER JOIN TABLE2 ON table1.column = table2.column;\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+FULL OUTER JOIN IS NOT SUPPORT BY MYSQL SO WE USE UNION OF LEFT OUTER JOIN AND RIGHT OUTER JOIN\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+CROSS JOIN\
+\
+SELECT *\
+FROM TABLE1 CROSS JOIN TABLE2\
+\
+-\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+PRIMARY KEY CONSTRAINT\
+\
+CREATE TABLE tableName\
+(\
+Column1 datatype,\
+Column2 datatype\
+Column3 datatype3\
+CONSTRAINT constraint_name PRIMARY KEY (cloumn1, column2)\
+);\
+\
+FOREIGN KEY CONSTRAINT\
+\
+CREATE TABLE tableName\
+(\
+Column1 datatype,\
+Column2 datatype\
+Column3 datatype3\
+FOREIGN KEY (Cloumn1)constraint_name REFERENCE TABLE2(column)\
+);\
+\
+\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+Delete duplicate row\
+\
+DELETE table1\
+FROM tabel1 INNERJOIN table2 [on table1.cloumn =table2.cloumn]\
+WHERE condition[to pick on from duplicates]\
+\
+Second way\
+CREATE TABLE table2 LIKE table;\
+\
+INSERT INTO table2\
+SELECT *\
+FROM table\
+GROUP BY cloumn\
+\
+DROP TABLE table\
+ALTER TABLE  table2 RENAME TO table\
+\
+\
+-\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\'97\
+Nth Highest salary\
+\
+1 approach (2nd highest salary)\
+SELECT MIN(salary) FROM (\
+SELECT DISTINCT salary FROM tableName ORDER BY salary DESC )\
+WHERE rownum < 3;\
+\
+2 approach\
+\
+SELECT * FROM (\
+	SELECT name, salary, dense_rank() over (order by salary DESC) rank\
+	FROM table )\
+WHERE rank = &num\
+\
+3 approach\
+1.  SELECT DISTINCT TOP N salary\
+FROM employee \
+ORDER BY salary DESC\
+\
+2.  SELECT MIN(salary)\
+FROM employee\
+WHERE salary IN (1.above query)\
+\
+SELECT * FROM employee\
+WHERE salary = (2 above query)\
+\
+\
+\
+\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
